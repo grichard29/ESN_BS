@@ -53,12 +53,14 @@ class DefaultController extends Controller
     public function createAction()
     {
         $userManager = $this->get('fos_user.user_manager');
-        $user = $userManager->createUser();
-        $user->setUsername('admin');
-        $user->setPlainPassword('admin');
-        $user->setEmail('admin@test.com');
-        $user->setRoles(['ROLE_ADMIN']);
-        $userManager->updateUser($user);
+        for($i=1;$i<6;$i++) {
+            $user = $userManager->createUser();
+            $user->setUsername('admin'.$i);
+            $user->setPlainPassword('admin'.$i);
+            $user->setEmail('admin'.$i.'@test.com');
+            $user->setRoles(['ROLE_ADMIN']);
+            $userManager->updateUser($user);
+        }
         for($i=1;$i<6;$i++) {
             $user = $userManager->createUser();
             $user->setUsername('test'.$i);
