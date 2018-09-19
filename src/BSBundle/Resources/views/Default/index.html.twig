@@ -1,0 +1,13 @@
+<h1> Bienvenue sur la page d'accueil {{ name }}!</h1>
+{% if name == '' %}
+    <h2>Pas de compte ? Créez en un en cliquant <a href="/register">ici</a> !</h2>
+    <h2>Déjà un ? Connectez-vous en un en cliquant <a href="/login">ici</a> !</h2>
+{% else %}
+    <h2>Pour vous déconnecter cliquez <a href="/logout">ici</a>.</h2>
+    {% if  isAuthorized %}
+        <h2> Pour avoir accès à la liste des utilisateurs cliquez <a href="/liste">ici</a>.</h2>
+    {% endif %}
+{% endif %}
+{% if noUsers %}
+    <h2> Pour créer des utilisateurs tests cliquez <a href="/create">ici</a>.</h2>
+{% endif %}
