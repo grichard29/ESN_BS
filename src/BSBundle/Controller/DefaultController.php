@@ -26,7 +26,27 @@ class DefaultController extends Controller
         $noUsers = (count($users)>0) ? false : true;
         return $this->render('BSBundle:Default:index.html.twig',['name' => $name,'isAuthorized' => $isAuthorized, 'noUsers' => $noUsers]);
     }
-
+    /**
+     * @Route("/is")
+     */
+    public function iSAction(){
+        $this->denyAccessUnlessGranted('ROLE_IS', null, 'Unable to access this page!');
+        return $this->render('BSBundle:Default:is.html.twig');
+    }
+    /**
+     * @Route("/bc")
+     */
+    public function bCAction(){
+        $this->denyAccessUnlessGranted('ROLE_BC', null, 'Unable to access this page!');
+        return $this->render('BSBundle:Default:bc.html.twig');
+    }
+    /**
+     * @Route("/local")
+     */
+    public function localAction(){
+        $this->denyAccessUnlessGranted('ROLE_LOCAL', null, 'Unable to access this page!');
+        return $this->render('BSBundle:Default:local.html.twig');
+    }
     /**
      * @Route("/create")
      */
